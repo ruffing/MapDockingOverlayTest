@@ -1,0 +1,57 @@
+
+.dosimeter-chart-comp
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 95%;
+    pointer-events:all;
+}
+
+.dosimeter-chart-panel
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 100%;
+    pointer-events:all;
+}
+
+.dosimeter-chart-area 
+{
+   height: 90%;
+}
+
+/*
+.dosimeter-chart-panel
+{
+     basic styling 
+    border: 1px solid #555;
+    font: 14px Arial;
+    margin: 0px auto;
+    padding: 0px;
+
+     flexbox setup 
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: flex-start;
+
+    pointer-events:all;
+    background-color: rgba(0,0,125,0.5);
+}
+
+.dosimeter-chart-panel div.dosimeter-chart-text {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+}
+
+.dosimeter-chart-panel div.dosimeter-chart-area {
+    order: 0;
+    flex: 1 1 auto;
+    align-self: auto;
+    background-color: rgba(125,0,0,0.5);
+}*/

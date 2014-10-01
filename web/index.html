@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!--  Mobile Viewport Fix -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- External style sheets -->
+    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="libs/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="libs/dockspawn/dock-manager.css">
+    <link rel="stylesheet" href="libs/dockspawn/demo.css">
+    
+    <!-- Local style sheets -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/local_map.css" />
+    <!--<link rel="stylesheet" href="css/top-panel.css" />-->
+    <!--<link rel="stylesheet" href="css/sensor-list-display.css" />-->
+    <!--<link rel="stylesheet" href="css/dosimeter-chart-panel.css" />-->
+    
+    
+    
+    
+</head>
+
+<body>
+    <div id="map"></div>
+    <div class="overlay-panel">
+        <div class="demo-header" id="header">
+            <div class="demo-header-title">Dock Spawn IDE Demo [Javascript]</div>
+            <div class="demo-header-description">Pull a panel out from it's title bar and dock it elsewhere</div>
+            <div><p>Nothing here {{'yet' + '!'}}</p></div>
+        </div>
+        <div id="my_dock_manager" class="my-dock-manager"></div>
+    </div>
+
+    <div id="properties_window" caption="Properties" class="properties-window">
+        <div>
+            <p>Nothing here {{'yet' + '!'}}</p>
+            <p>1 + 2 = {{ 1 + 2 }}</p>
+        </div>
+    </div>
+    <div id="outline_window" caption="Outline" class="outline-window"></div>
+
+    <!-- External scripts -->
+    <script src="libs/jquery/jquery-2.1.1.min.js"></script>
+    <script src="libs/angular/angular.js"></script>
+    <!--<script src="libs/jquery-element-onresize/jquery-element-onresize.js"></script>-->
+    <script src="libs/dockspawn/dockspawn.js"></script>
+    <script src="libs/jsviews/jsviews.js"></script>
+    <script src="libs/leaflet/leaflet.js"></script>
+    <script src="libs/leaflet/leaflet-providers/leaflet-providers.js"></script>
+    <!--<script src="libs/wcDocker/wcDocker.js"></script>-->
+    <script src="libs/chartjs/Chart.js"></script>
+    
+    <!-- Local scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/utility.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/sensor-data.js"></script>
+    <script src="js/overlay-docking.js"></script>
+    <script src="js/sensor-list-display.js"></script>
+    <script src="js/radiation-charts.js"></script>
+
+
+    <script>
+        window.onload = function()
+        {
+            mainMapUI.initialize();
+            
+            // Convert a div to the dock manager.  Panels can then be docked on to it
+            var divDockManager = document.getElementById("my_dock_manager");
+            var dockManager = new dockspawn.DockManager(divDockManager);
+            dockManager.initialize();
+            
+            // Let the dock manager element fill in the entire screen
+            var onResized = function(e)
+            {
+                dockManager.resize(window.innerWidth - (divDockManager.clientLeft + divDockManager.offsetLeft), window.innerHeight - (divDockManager.clientTop + divDockManager.offsetTop));
+            }
+            window.onresize = onResized;
+            onResized(null);
+
+            // Convert existing elements on the page into "Panels".
+            // They can then be docked on to the dock manager
+            // Panels get a titlebar and a close button, and can also be
+            // converted to a floating dialog box which can be dragged / resized
+            var properties = new dockspawn.PanelContainer(document.getElementById("properties_window"), dockManager);
+            var outline = new dockspawn.PanelContainer(document.getElementById("outline_window"), dockManager);
+
+            // Dock the panels on the dock manager
+            var documentNode = dockManager.context.model.documentManagerNode;
+            var outlineNode = dockManager.dockLeft(documentNode, outline, 0.15)
+            var propertiesNode = dockManager.dockDown(outlineNode, properties, 0.6);		
+        }
+    </script>
+
+</body>
+</html>

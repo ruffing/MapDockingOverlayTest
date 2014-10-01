@@ -1,0 +1,34 @@
+
+.sensor-container
+{
+    /* basic styling */
+    width: 150px;
+    height: 70px;
+    border: 1px solid #555;
+    font: 14px Arial;
+    margin: 0px auto;
+    padding: 0px;
+
+    /* flexbox setup */
+    display: -webkit-flex;
+    -webkit-flex-direction: row;
+
+    display: flex;
+    flex-direction: row;
+    
+    pointer-events:all;
+}
+
+.sensor-container div.sensor-container-text {
+    order: 0;
+    flex: 3 1 auto;
+    align-self: auto;
+}
+
+.sensor-container div.sensor-container-launcher {
+    order: 0;
+    flex: 1 1 auto;
+    align-self: auto;
+    align: right;
+}
+

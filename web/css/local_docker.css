@@ -1,0 +1,53 @@
+
+.wcPanelBackground {
+    border: none;
+    pointer-events:none; 
+    background-color: transparent;
+}
+
+.wcLayoutPane {
+    background-color: transparent;
+    pointer-events:none; 
+}
+
+.wcFrame {
+    pointer-events:none; 
+}
+
+.wcFrameCenter {
+    pointer-events:none; 
+    background-color: transparent;
+}
+
+.wcPanelTabContent {
+    pointer-events:none; 
+    background-color: transparent;
+}
+
+.wcFrameTitle {
+    pointer-events:all;
+    background-color: transparent;
+}
+
+.wcPanelTab {
+    pointer-events:all;
+    background-color: rgba(0,0,0,0.4);
+    color: white;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;  
+}
+
+.wcPanelTabActive {
+    background-color: rgba(0,0,0,0.5);
+    font-weight: bold;
+    margin-top: 1px;
+}
+
+.wcSplitterBar {
+    pointer-events:all;
+    border: none;
+    background-color: rgba(0,0,0,0.3);
+}
